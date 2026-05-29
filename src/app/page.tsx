@@ -28,7 +28,16 @@ export default function Home() {
         <div className="flex flex-col gap-4">
           <span className="text-sm font-semibold tracking-tight">Jes Marwaha</span>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-            A British-Asian graphic designer based in Kent, with a passion for type, texture and bringing brands to life with motion.<br /><br />I have three years of in-house experience working on web design, print collateral, and ad campaigns.
+            A British-Asian Graphic Designer. Currently working at{" "}
+            <a
+              href="https://mous.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
+            >
+              Mous
+            </a>{" "}
+            as a Midweight Graphic Designer. Crafting CRM campaigns, ads and brand assets.
           </p>
           <div className="flex gap-3">
             <a href="https://instagram.com/jes_marwaha" aria-label="Instagram" className="text-muted-foreground hover:text-foreground transition-colors">
