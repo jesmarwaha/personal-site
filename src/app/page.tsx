@@ -26,7 +26,7 @@ export default function Home() {
     <main className="h-screen flex flex-col">
       <div className="flex items-start justify-between px-6 py-6">
         <div className="flex flex-col gap-4">
-          <span className="text-sm font-bold uppercase tracking-widest">Jes Marwaha</span>
+          <span className="text-sm font-semibold tracking-tight">Jes Marwaha</span>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
             A British-Asian graphic designer based in Kent, with a passion for type, texture and bringing brands to life with motion.<br /><br />I have three years of in-house experience working on web design, print collateral, and ad campaigns.
           </p>
