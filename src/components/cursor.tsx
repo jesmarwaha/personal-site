@@ -1,117 +1,70 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
-import { motion, useMotionValue, useSpring, animate } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function Cursor() {
+  const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
-  const snappedRef = useRef(false);
 
-  // Raw mouse — always up to date
-  const rawX = useRef(-100);
-  const rawY = useRef(-100);
-
-  // Spring target — what the cursor chases when not snapped
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
+
   const x = useSpring(mouseX, { stiffness: 1200, damping: 40, mass: 0.1 });
   const y = useSpring(mouseY, { stiffness: 1200, damping: 40, mass: 0.1 });
 
-  // Shape / appearance
-  const width  = useMotionValue(20);
-  const height = useMotionValue(20);
-  const radius = useMotionValue(999);
-  const tx     = useMotionValue(-10);
-  const ty     = useMotionValue(-10);
-
-  const EASE = [0.25, 1, 0.5, 1] as const;
-  const DUR  = 0.18;
-
-  const snapTo = useCallback((el: Element) => {
-    snappedRef.current = true;
-    const r   = el.getBoundingClientRect();
-    const pad = 6;
-    const w   = r.width  + pad * 2;
-    const h   = r.height + pad * 2;
-    const cx  = r.left   + r.width  / 2;
-    const cy  = r.top    + r.height / 2;
-    const br  = parseFloat(getComputedStyle(el).borderRadius) || 4;
-
-    // Snap position (animate x/y directly, bypassing spring)
-    animate(x,      cx,       { duration: DUR, ease: EASE });
-    animate(y,      cy,       { duration: DUR, ease: EASE });
-    animate(width,  w,        { duration: DUR, ease: EASE });
-    animate(height, h,        { duration: DUR, ease: EASE });
-    animate(radius, br + pad, { duration: DUR, ease: EASE });
-    animate(tx,     -w / 2,   { duration: DUR, ease: EASE });
-    animate(ty,     -h / 2,   { duration: DUR, ease: EASE });
-  }, [x, y, width, height, radius, tx, ty, DUR, EASE]);
-
-  const unsnap = useCallback(() => {
-    snappedRef.current = false;
-
-    // Teleport spring target to current mouse so it re-engages from the right spot
-    mouseX.jump(rawX.current);
-    mouseY.jump(rawY.current);
-
-    animate(width,  20,  { duration: DUR, ease: EASE });
-    animate(height, 20,  { duration: DUR, ease: EASE });
-    animate(radius, 999, { duration: DUR, ease: EASE });
-    animate(tx,     -10, { duration: DUR, ease: EASE });
-    animate(ty,     -10, { duration: DUR, ease: EASE });
-  }, [mouseX, mouseY, width, height, radius, tx, ty, DUR, EASE]);
-
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
-      rawX.current = e.clientX;
-      rawY.current = e.clientY;
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
       if (!visible) setVisible(true);
-      // Only drive the spring when free — while snapped, position is held by animate()
-      if (!snappedRef.current) {
-        mouseX.set(e.clientX);
-        mouseY.set(e.clientY);
-      }
     };
 
     const onOver = (e: MouseEvent) => {
-      const el = (e.target as HTMLElement).closest("a, button, [data-snap]");
-      if (el) snapTo(el);
+      const el = e.target as HTMLElement;
+      setHovered(!!el.closest("a, button, [role='button'], label, input, select, textarea"));
     };
 
-    const onOut = (e: MouseEvent) => {
-      const to = e.relatedTarget as HTMLElement | null;
-      if (!to?.closest("a, button, [data-snap]")) unsnap();
-    };
+    const onLeave = () => setVisible(false);
+    const onEnter = () => setVisible(true);
 
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseover", onOver);
-    window.addEventListener("mouseout",  onOut);
-    document.documentElement.addEventListener("mouseleave", () => setVisible(false));
-    document.documentElement.addEventListener("mouseenter", () => setVisible(true));
+    document.documentElement.addEventListener("mouseleave", onLeave);
+    document.documentElement.addEventListener("mouseenter", onEnter);
 
     return () => {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
-      window.removeEventListener("mouseout",  onOut);
+      document.documentElement.removeEventListener("mouseleave", onLeave);
+      document.documentElement.removeEventListener("mouseenter", onEnter);
     };
-  }, [visible, mouseX, mouseY, snapTo, unsnap]);
+  }, [mouseX, mouseY, visible]);
 
   return (
     <>
       <style>{`* { cursor: none !important; }`}</style>
+
       <motion.div
-        style={{
-          x, y,
-          width, height,
-          borderRadius: radius,
-          translateX: tx,
-          translateY: ty,
-          backgroundColor: "color-mix(in oklch, var(--foreground) 18%, transparent)",
-        }}
+        style={{ x, y }}
         className="pointer-events-none fixed top-0 left-0 z-[9999]"
         animate={{ opacity: visible ? 1 : 0 }}
         transition={{ opacity: { duration: 0.15 } }}
-      />
+      >
+        <motion.div
+          className="rounded-full"
+          animate={{
+            width:  hovered ? 14 : 20,
+            height: hovered ? 14 : 20,
+            backgroundColor: hovered
+              ? "var(--foreground)"
+              : "color-mix(in oklch, var(--foreground) 25%, transparent)",
+            x: hovered ? -7 : -10,
+            y: hovered ? -7 : -10,
+          }}
+          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+        />
+      </motion.div>
     </>
   );
 }
