@@ -23,7 +23,7 @@ function LinkedInIcon() {
 
 export default function Home() {
   return (
-    <main className="h-screen flex flex-col">
+    <main className="h-[100dvh] flex flex-col">
       {/* Top bar */}
       <div className="flex items-start justify-between px-6 py-6">
         <div className="flex flex-col gap-4">
