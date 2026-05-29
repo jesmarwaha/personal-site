@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main className="h-[100dvh] flex flex-col">
       {/* Top — spacer for fixed header + bio + portfolio link */}
-      <div className="flex items-start justify-between px-6 pt-20 pb-4">
+      <div className="flex flex-col gap-4 px-6 pt-20 pb-4">
         <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
           A British-Asian Graphic Designer. Currently working at{" "}
           <a

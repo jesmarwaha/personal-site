@@ -41,7 +41,7 @@ const work = [
 export default function Portfolio() {
   return (
     <main className="flex flex-col px-6 pt-20 pb-6">
-      <div className="fixed top-0 right-0 px-6 py-6 z-40">
+      <div className="fixed bottom-0 right-0 px-6 py-6 z-40">
         <ThemeToggle />
       </div>
       <div className="flex flex-col gap-4">
