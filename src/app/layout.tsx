@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Cursor } from "@/components/cursor";
 import "./globals.css";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
 });
 
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col font-mono">
+    <html lang="en" className={`${interTight.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col font-[family-name:var(--font-inter-tight)]">
         <ThemeProvider>
           <Cursor />
           {children}
