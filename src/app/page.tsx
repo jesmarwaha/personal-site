@@ -7,11 +7,11 @@ export default function Home() {
         <div className="flex flex-col gap-4">
           <span className="text-sm font-semibold tracking-tight">Jes Marwaha</span>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-            Graphic Designer with a focus on web design, motion graphics and brand development. From revamping websites with Figma to orchestrating brand refreshes for B2B markets. With 3 years in house experience of crafting compelling campaigns and collateral..
+            A British-Asian graphic designer based in Kent, with a passion for type, texture and bringing brands to life with motion.<br />I have three years of in-house experience working on web design, print collateral, and ad campaigns.
           </p>
           <div className="flex gap-4">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/jes_marwaha"
               className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
             >
               instagram
