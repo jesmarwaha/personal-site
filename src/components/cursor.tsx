@@ -1,22 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue } from "framer-motion";
 
 export function Cursor() {
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(true);
 
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
-
-  const x = useSpring(mouseX, { stiffness: 1200, damping: 40, mass: 0.1 });
-  const y = useSpring(mouseY, { stiffness: 1200, damping: 40, mass: 0.1 });
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
 
   useEffect(() => {
+    // Only show on non-touch devices
+    setIsTouchDevice(window.matchMedia("(hover: none)").matches);
+
     const onMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      x.set(e.clientX);
+      y.set(e.clientY);
       if (!visible) setVisible(true);
     };
 
@@ -39,7 +40,9 @@ export function Cursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.documentElement.removeEventListener("mouseenter", onEnter);
     };
-  }, [mouseX, mouseY, visible]);
+  }, [x, y, visible]);
+
+  if (isTouchDevice) return null;
 
   return (
     <>
