@@ -26,6 +26,12 @@ export function WorkItem({ title, role, period, desc, images = [] }: WorkItemPro
     return () => window.removeEventListener("keydown", onKey);
   }, [lightbox, images.length]);
 
+  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    document.body.style.overflow = lightbox !== null ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [lightbox]);
+
   return (
     <div className="-mx-3 px-3 py-2 rounded-sm hover:bg-muted/60 transition-colors duration-200">
       <button
@@ -71,12 +77,15 @@ export function WorkItem({ title, role, period, desc, images = [] }: WorkItemPro
                   transition={{ delay: i * 0.06, duration: 0.3, ease: "easeOut" }}
                   onClick={(e) => { e.stopPropagation(); setLightbox(i); }}
                   className="shrink-0 w-48 h-32 rounded-sm overflow-hidden bg-muted cursor-zoom-in"
+                  style={{ visibility: lightbox === i ? "hidden" : "visible" }}
                 >
-                  <img
+                  <motion.img
+                    layoutId={`img-${title}-${i}`}
                     src={src}
                     alt=""
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover"
                     draggable={false}
+                    transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                   />
                 </motion.button>
               ))}
@@ -88,53 +97,74 @@ export function WorkItem({ title, role, period, desc, images = [] }: WorkItemPro
       {/* Lightbox */}
       <AnimatePresence>
         {lightbox !== null && (
-          <motion.div
-            key="lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm"
-            onClick={() => setLightbox(null)}
-          >
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-50 bg-background/90 backdrop-blur-sm"
+              onClick={() => setLightbox(null)}
+            />
+
+            {/* Expanded image — shares layoutId with thumbnail */}
+            <motion.img
+              key={`lightbox-${lightbox}`}
+              layoutId={`img-${title}-${lightbox}`}
+              src={images[lightbox]}
+              alt=""
+              className="fixed z-50 rounded-sm object-contain shadow-2xl"
+              style={{
+                top: "50%",
+                left: "50%",
+                x: "-50%",
+                y: "-50%",
+                maxWidth: "90vw",
+                maxHeight: "85vh",
+              }}
+              transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+              draggable={false}
+              onClick={() => setLightbox(null)}
+            />
+
             {/* Prev */}
             {lightbox > 0 && (
-              <button
-                className="absolute left-6 text-2xl text-muted-foreground hover:text-foreground transition-colors"
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed left-6 top-1/2 -translate-y-1/2 z-50 text-2xl text-muted-foreground hover:text-foreground transition-colors"
                 onClick={(e) => { e.stopPropagation(); setLightbox(lightbox - 1); }}
               >
                 ‹
-              </button>
+              </motion.button>
             )}
-
-            <motion.img
-              key={lightbox}
-              src={images[lightbox]}
-              alt=""
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="max-w-[90vw] max-h-[85vh] rounded-sm object-contain shadow-2xl"
-              draggable={false}
-              onClick={(e) => e.stopPropagation()}
-            />
 
             {/* Next */}
             {lightbox < images.length - 1 && (
-              <button
-                className="absolute right-6 text-2xl text-muted-foreground hover:text-foreground transition-colors"
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed right-6 top-1/2 -translate-y-1/2 z-50 text-2xl text-muted-foreground hover:text-foreground transition-colors"
                 onClick={(e) => { e.stopPropagation(); setLightbox(lightbox + 1); }}
               >
                 ›
-              </button>
+              </motion.button>
             )}
 
             {/* Counter */}
-            <span className="absolute bottom-6 text-xs text-muted-foreground">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 text-xs text-muted-foreground"
+            >
               {lightbox + 1} / {images.length}
-            </span>
-          </motion.div>
+            </motion.span>
+          </>
         )}
       </AnimatePresence>
     </div>
