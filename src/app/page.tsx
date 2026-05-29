@@ -24,6 +24,7 @@ function LinkedInIcon() {
 export default function Home() {
   return (
     <main className="h-screen flex flex-col">
+      {/* Top bar */}
       <div className="flex items-start justify-between px-6 py-6">
         <div className="flex flex-col gap-4">
           <span className="text-sm font-semibold tracking-tight">Jes Marwaha</span>
@@ -39,17 +40,27 @@ export default function Home() {
             </a>{" "}
             as a Midweight Graphic Designer. Crafting CRM campaigns, ads and brand assets.
           </p>
-          <div className="flex gap-3">
-            <a href="https://instagram.com/jes_marwaha" aria-label="Instagram" className="text-muted-foreground hover:text-foreground transition-colors">
-              <InstagramIcon />
-            </a>
-            <a href="https://linkedin.com" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors">
-              <LinkedInIcon />
-            </a>
-            <a href="mailto:hello@jesmarwaha.info" aria-label="Email" className="text-muted-foreground hover:text-foreground transition-colors">
-              <Mail size={15} strokeWidth={1.5} />
-            </a>
-          </div>
+        </div>
+        <a
+          href="/portfolio"
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+        >
+          portfolio
+        </a>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="mt-auto flex items-center justify-between px-6 py-6">
+        <div className="flex gap-3">
+          <a href="https://instagram.com/jes_marwaha" aria-label="Instagram" className="text-muted-foreground hover:text-foreground transition-colors">
+            <InstagramIcon />
+          </a>
+          <a href="https://linkedin.com" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors">
+            <LinkedInIcon />
+          </a>
+          <a href="mailto:hello@jesmarwaha.info" aria-label="Email" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Mail size={15} strokeWidth={1.5} />
+          </a>
         </div>
         <ThemeToggle />
       </div>
