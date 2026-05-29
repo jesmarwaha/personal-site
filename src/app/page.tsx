@@ -27,23 +27,20 @@ function LinkedInIcon() {
 export default function Home() {
   return (
     <main className="h-[100dvh] flex flex-col">
-      {/* Top bar */}
-      <div className="flex items-start justify-between px-6 py-6">
-        <div className="flex flex-col gap-4">
-          <span className="text-sm font-semibold tracking-tight">Jes Marwaha</span>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-            A British-Asian Graphic Designer. Currently working at{" "}
-            <a
-              href="https://mous.co"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
-            >
-              <strong>Mous</strong>
-            </a>{" "}
-            as a Midweight Graphic Designer. Crafting CRM campaigns, ads and brand assets.
-          </p>
-        </div>
+      {/* Top — spacer for fixed header + bio + portfolio link */}
+      <div className="flex items-start justify-between px-6 pt-20 pb-4">
+        <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+          A British-Asian Graphic Designer. Currently working at{" "}
+          <a
+            href="https://mous.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
+          >
+            <strong>Mous</strong>
+          </a>{" "}
+          as a Midweight Graphic Designer. Crafting CRM campaigns, ads and brand assets.
+        </p>
         <a
           href="/portfolio"
           className="text-xs text-muted-foreground hover:text-foreground transition-colors"

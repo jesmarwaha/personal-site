@@ -1,6 +1,5 @@
-import { ThemeToggle } from "@/components/theme-toggle";
 import { WorkItem } from "@/components/work-item";
-import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const work = [
   {
@@ -41,20 +40,14 @@ const work = [
 
 export default function Portfolio() {
   return (
-    <main className="h-[100dvh] flex flex-col">
-      {/* Top bar */}
-      <div className="flex items-start justify-between px-6 py-6">
-        <div className="flex flex-col gap-6">
-          <Link href="/" className="text-sm font-semibold tracking-tight hover:text-muted-foreground transition-colors">
-            Jes Marwaha
-          </Link>
-          <div className="flex flex-col gap-4">
-            {work.map((w) => (
-              <WorkItem key={w.title} {...w} />
-            ))}
-          </div>
-        </div>
+    <main className="flex flex-col px-6 pt-20 pb-6">
+      <div className="fixed top-0 right-0 px-6 py-6 z-40">
         <ThemeToggle />
+      </div>
+      <div className="flex flex-col gap-4">
+        {work.map((w) => (
+          <WorkItem key={w.title} {...w} />
+        ))}
       </div>
     </main>
   );
