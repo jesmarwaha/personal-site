@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { label: "github", href: "https://github.com" },
@@ -34,14 +34,15 @@ const writing = [
   { title: "Notes on long-term technical decisions", date: "Oct 2024", href: "#" },
 ];
 
-const skills = ["TypeScript", "Go", "Rust", "React", "Postgres", "K8s"];
-
 export default function Home() {
   return (
     <main className="max-w-xl mx-auto px-6 py-20 space-y-16">
       {/* Header */}
       <section className="space-y-4">
-        <h1 className="text-xl font-semibold tracking-tight">Jes</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl font-semibold tracking-tight">Jes</h1>
+          <ThemeToggle />
+        </div>
         <p className="text-muted-foreground leading-relaxed text-sm">
           Engineer, builder, occasional writer. I work on hard infrastructure
           problems and care a lot about simplicity. Based somewhere with good
@@ -81,22 +82,6 @@ export default function Home() {
                 {w.desc}
               </p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <Separator />
-
-      {/* Skills */}
-      <section className="space-y-4">
-        <h2 className="text-xs uppercase tracking-widest text-muted-foreground">
-          Skills
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((s) => (
-            <Badge key={s} variant="secondary" className="text-xs font-mono">
-              {s}
-            </Badge>
           ))}
         </div>
       </section>
