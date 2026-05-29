@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { WorkItem } from "@/components/work-item";
 import Link from "next/link";
@@ -42,32 +41,21 @@ const work = [
 
 export default function Portfolio() {
   return (
-    <main className="max-w-xl mx-auto px-6 py-20 space-y-16">
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
+    <main className="h-[100dvh] flex flex-col">
+      {/* Top bar */}
+      <div className="flex items-start justify-between px-6 py-6">
+        <div className="flex flex-col gap-6">
           <Link href="/" className="text-sm font-semibold tracking-tight hover:text-muted-foreground transition-colors">
             Jes Marwaha
           </Link>
-          <ThemeToggle />
+          <div className="flex flex-col gap-4">
+            {work.map((w) => (
+              <WorkItem key={w.title} {...w} />
+            ))}
+          </div>
         </div>
-      </section>
-
-      <Separator />
-
-      <section className="space-y-6">
-        <h2 className="text-xs uppercase tracking-widest text-muted-foreground">Work</h2>
-        <div className="space-y-6">
-          {work.map((w) => (
-            <WorkItem key={w.title} {...w} />
-          ))}
-        </div>
-      </section>
-
-      <Separator />
-
-      <footer className="text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Jes Marwaha
-      </footer>
+        <ThemeToggle />
+      </div>
     </main>
   );
 }
