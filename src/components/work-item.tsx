@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface WorkItemProps {
@@ -14,6 +14,17 @@ interface WorkItemProps {
 export function WorkItem({ title, role, period, desc, images = [] }: WorkItemProps) {
   const [open, setOpen] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") setLightbox((i) => (i !== null && i < images.length - 1 ? i + 1 : i));
+      if (e.key === "ArrowLeft")  setLightbox((i) => (i !== null && i > 0 ? i - 1 : i));
+      if (e.key === "Escape")     setLightbox(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, images.length]);
 
   return (
     <div>
