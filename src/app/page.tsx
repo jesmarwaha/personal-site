@@ -6,8 +6,8 @@ export default function Home() {
       <div className="flex items-start justify-between px-6 py-6">
         <div className="flex flex-col gap-4">
           <span className="text-sm font-semibold tracking-tight">Jes Marwaha</span>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Graphic designer. Something is coming — check back soon.
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+            Graphic Designer with a focus on web design, motion graphics and brand development. From revamping websites with Figma to orchestrating brand refreshes for B2B markets. With 3 years in house experience of crafting compelling campaigns and collateral..
           </p>
           <div className="flex gap-4">
             <a
