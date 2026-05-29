@@ -45,38 +45,27 @@ export function Cursor() {
 
   return (
     <>
-      {/* Hide the native cursor globally */}
       <style>{`* { cursor: none !important; }`}</style>
 
       <motion.div
         ref={cursorRef}
         style={{ x, y }}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] -translate-x-1/2 -translate-y-1/2"
+        className="pointer-events-none fixed top-0 left-0 z-[9999]"
         animate={{ opacity: visible ? 1 : 0 }}
         transition={{ opacity: { duration: 0.15 } }}
       >
-        {/* Outer ring — appears on hover */}
         <motion.div
-          className="absolute inset-0 rounded-full border border-foreground -translate-x-1/2 -translate-y-1/2"
+          className="rounded-full"
           animate={{
-            width: hovered ? 32 : 0,
-            height: hovered ? 32 : 0,
-            opacity: hovered ? 0.4 : 0,
+            width:  hovered ? 14 : 20,
+            height: hovered ? 14 : 20,
+            backgroundColor: hovered
+              ? "var(--foreground)"
+              : "color-mix(in oklch, var(--foreground) 25%, transparent)",
+            x: hovered ? -7 : -10,
+            y: hovered ? -7 : -10,
           }}
           transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          style={{ left: "50%", top: "50%" }}
-        />
-
-        {/* Inner dot */}
-        <motion.div
-          className="rounded-full bg-foreground"
-          animate={{
-            width: hovered ? 4 : 5,
-            height: hovered ? 4 : 5,
-            opacity: hovered ? 0.6 : 1,
-          }}
-          transition={{ duration: 0.15, ease: "easeOut" }}
-          style={{ transform: "translate(-50%, -50%)" }}
         />
       </motion.div>
     </>
