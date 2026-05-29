@@ -7,7 +7,7 @@ export default function Home() {
         <div className="flex flex-col gap-4">
           <span className="text-sm font-semibold tracking-tight">Jes Marwaha</span>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-            A British-Asian graphic designer based in Kent, with a passion for type, texture and bringing brands to life with motion.<br />I have three years of in-house experience working on web design, print collateral, and ad campaigns.
+            A British-Asian graphic designer based in Kent, with a passion for type, texture and bringing brands to life with motion.<br /><br />I have three years of in-house experience working on web design, print collateral, and ad campaigns.
           </p>
           <div className="flex gap-4">
             <a
