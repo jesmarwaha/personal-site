@@ -99,19 +99,20 @@ export default function Home() {
         <h2 className="text-xs uppercase tracking-widest text-muted-foreground">
           Writing
         </h2>
-        <div className="space-y-3">
+        <div className="space-y-1">
           {writing.map((w) => (
-            <div key={w.title} className="flex items-baseline justify-between gap-4">
-              <a
-                href={w.href}
-                className="text-sm underline underline-offset-4 hover:text-muted-foreground transition-colors"
-              >
+            <a
+              key={w.title}
+              href={w.href}
+              className="flex items-baseline justify-between gap-4 -mx-3 px-3 py-2 rounded-sm hover:bg-muted/60 transition-colors duration-200"
+            >
+              <span className="text-sm underline underline-offset-4 decoration-border">
                 {w.title}
-              </a>
+              </span>
               <span className="text-xs text-muted-foreground whitespace-nowrap">
                 {w.date}
               </span>
-            </div>
+            </a>
           ))}
         </div>
       </section>

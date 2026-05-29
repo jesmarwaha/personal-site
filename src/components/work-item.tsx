@@ -27,7 +27,7 @@ export function WorkItem({ title, role, period, desc, images = [] }: WorkItemPro
   }, [lightbox, images.length]);
 
   return (
-    <div>
+    <div className="-mx-3 px-3 py-2 rounded-sm hover:bg-muted/60 transition-colors duration-200">
       <button
         onClick={() => images.length > 0 && setOpen((o) => !o)}
         className={`w-full text-left space-y-1 group ${images.length > 0 ? "cursor-pointer" : "cursor-default"}`}
