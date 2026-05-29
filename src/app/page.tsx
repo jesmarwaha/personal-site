@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { WorkItem } from "@/components/work-item";
 
 const links = [
   { label: "github", href: "https://github.com" },
@@ -9,22 +10,38 @@ const links = [
 
 const work = [
   {
-    title: "Some Company",
-    role: "Senior Engineer",
-    period: "2022 — now",
+    title: "Mous",
+    role: "Midweight Graphic Designer",
+    period: "2024 — now",
     desc: "Building infrastructure for distributed systems at scale.",
+    images: [
+      "https://picsum.photos/seed/mous1/400/300",
+      "https://picsum.photos/seed/mous2/400/300",
+      "https://picsum.photos/seed/mous3/400/300",
+      "https://picsum.photos/seed/mous4/400/300",
+    ],
   },
   {
-    title: "Another Place",
-    role: "Software Engineer",
-    period: "2019 — 2022",
+    title: "EO Charging",
+    role: "Graphic Designer",
+    period: "2021 — 2024",
     desc: "Full-stack product work on a consumer fintech app.",
+    images: [
+      "https://picsum.photos/seed/eo1/400/300",
+      "https://picsum.photos/seed/eo2/400/300",
+      "https://picsum.photos/seed/eo3/400/300",
+    ],
   },
   {
-    title: "Early Startup",
-    role: "Engineer",
-    period: "2017 — 2019",
+    title: "Extreme E",
+    role: "Graphic Designer",
+    period: "2020 — 2019",
     desc: "First engineer. Wore every hat.",
+    images: [
+      "https://picsum.photos/seed/ee1/400/300",
+      "https://picsum.photos/seed/ee2/400/300",
+      "https://picsum.photos/seed/ee3/400/300",
+    ],
   },
 ];
 
@@ -70,18 +87,7 @@ export default function Home() {
         </h2>
         <div className="space-y-6">
           {work.map((w) => (
-            <div key={w.title} className="space-y-1">
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="text-sm font-medium">{w.title}</span>
-                <span className="text-xs text-muted-foreground whitespace-nowrap">
-                  {w.period}
-                </span>
-              </div>
-              <div className="text-xs text-muted-foreground">{w.role}</div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {w.desc}
-              </p>
-            </div>
+            <WorkItem key={w.title} {...w} />
           ))}
         </div>
       </section>
