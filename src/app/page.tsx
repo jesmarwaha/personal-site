@@ -1,4 +1,25 @@
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Mail } from "lucide-react";
+
+function InstagramIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
@@ -9,24 +30,15 @@ export default function Home() {
           <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
             A British-Asian graphic designer based in Kent, with a passion for type, texture and bringing brands to life with motion.<br /><br />I have three years of in-house experience working on web design, print collateral, and ad campaigns.
           </p>
-          <div className="flex gap-4">
-            <a
-              href="https://instagram.com/jes_marwaha"
-              className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
-            >
-              instagram
+          <div className="flex gap-3">
+            <a href="https://instagram.com/jes_marwaha" aria-label="Instagram" className="text-muted-foreground hover:text-foreground transition-colors">
+              <InstagramIcon />
             </a>
-            <a
-              href="https://linkedin.com"
-              className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
-            >
-              linkedin
+            <a href="https://linkedin.com" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors">
+              <LinkedInIcon />
             </a>
-            <a
-              href="mailto:hello@jesmarwaha.info"
-              className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
-            >
-              email
+            <a href="mailto:hello@jesmarwaha.info" aria-label="Email" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Mail size={15} strokeWidth={1.5} />
             </a>
           </div>
         </div>
