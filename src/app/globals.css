@@ -130,6 +130,6 @@
     @apply bg-background text-foreground;
   }
   html {
-    font-family: var(--font-manrope), sans-serif;
+    @apply font-mono;
   }
 }
