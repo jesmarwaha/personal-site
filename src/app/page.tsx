@@ -35,7 +35,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
             >
-              Mous
+              <strong>Mous</strong>
             </a>{" "}
             as a Midweight Graphic Designer. Crafting CRM campaigns, ads and brand assets.
           </p>
