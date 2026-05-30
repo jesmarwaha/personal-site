@@ -30,7 +30,7 @@ export default function Home() {
       {/* Top — spacer for fixed header + bio + portfolio link */}
       <div className="flex flex-col gap-4 px-6 pt-20 pb-4">
         <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-          Graphic Designer based in Kent. I'm into type, texture and the kind of work that actually makes people stop. Right now I'm at{" "}
+          Hey I'm Jes 👋🏽 A Graphic Designer based in Kent. I'm into type, texture and building brand worlds. Right now I'm at{" "}
           <a
             href="https://mous.co"
             target="_blank"
@@ -39,7 +39,7 @@ export default function Home() {
           >
             <strong>Mous</strong>
           </a>{" "}
-          doing CRM campaigns, ads and brand assets. You can see some of it{" "}
+          working on CRM campaigns, ads and shaping the visual identity. You can see some of my work{" "}
           <a
             href="/portfolio"
             className="relative inline-block text-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
