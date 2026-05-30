@@ -27,7 +27,7 @@ export default function RootLayout({
           <Cursor />
           {/* Persistent header — sits outside template so it never animates */}
           <header className="fixed top-0 left-0 right-0 z-40 px-6 py-6 pointer-events-none">
-            <Link href="/" className="text-sm font-semibold tracking-tight hover:text-muted-foreground transition-colors pointer-events-auto">
+            <Link href="/" className="text-sm font-semibold tracking-tight hover:text-muted-foreground transition-colors pointer-events-auto inline-block px-3 py-1 rounded-full border border-border/60">
               Jes Marwaha
             </Link>
           </header>
