@@ -47,9 +47,9 @@ export default function Portfolio() {
 
       <div className="flex flex-col gap-8">
         <h2 className="text-xs uppercase tracking-widest text-muted-foreground">Experience</h2>
-        <div className="flex flex-col divide-y divide-border">
+        <div className="flex flex-col gap-3">
           {work.map((w) => (
-            <div key={w.title} className="py-5 first:pt-0">
+            <div key={w.title} className="border border-border rounded-sm px-4 py-4">
               <WorkItem {...w} />
             </div>
           ))}
