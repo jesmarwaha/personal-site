@@ -1,4 +1,5 @@
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LinkPreview } from "@/components/link-preview";
 
 function MailIcon() {
   return (
@@ -31,21 +32,23 @@ export default function Home() {
       <div className="flex flex-col gap-4 px-6 pt-20 pb-4">
         <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
           Hey I'm Jes 👋🏽 A Graphic Designer based in Kent. I'm into type, texture and building brand worlds. Right now I'm at{" "}
-          <a
+          <LinkPreview
             href="https://mous.co"
+            src="https://picsum.photos/seed/mous-preview/400/267"
             target="_blank"
             rel="noopener noreferrer"
             className="relative inline-block text-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
           >
             <strong>Mous</strong>
-          </a>{" "}
+          </LinkPreview>{" "}
           working on CRM campaigns, ads and shaping the visual identity. You can see some of my work{" "}
-          <a
+          <LinkPreview
             href="/portfolio"
+            src="https://picsum.photos/seed/portfolio-preview/400/267"
             className="relative inline-block text-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
           >
             <strong>here</strong>
-          </a>.
+          </LinkPreview>.
         </p>
       </div>
 
