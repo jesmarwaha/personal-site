@@ -50,7 +50,7 @@ export function LinkPreview({ href, src, alt = "", children, className, target, 
               exit={{ opacity: 0, scale: 0.85, rotate: -6, y: 12 }}
               transition={{ duration: 0.25, ease: [0.34, 1.56, 0.64, 1] }}
             >
-              <div className="w-48 h-32 rounded-sm overflow-hidden shadow-xl p-1.5 bg-background border border-border/60">
+              <div className="w-48 h-32 rounded-sm overflow-hidden shadow-xl p-1.5 bg-background border border-border/60 dark:bg-neutral-700 dark:border-neutral-500">
                 <img
                   src={src}
                   alt={alt}
