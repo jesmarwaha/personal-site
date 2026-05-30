@@ -49,7 +49,7 @@ export default function Portfolio() {
         <h2 className="text-xs uppercase tracking-widest text-muted-foreground">Experience</h2>
         <div className="flex flex-col gap-3">
           {work.map((w) => (
-            <div key={w.title} className="px-4 py-4">
+            <div key={w.title} className="py-4">
               <WorkItem {...w} />
             </div>
           ))}
