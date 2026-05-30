@@ -18,8 +18,8 @@ export function WorkItem({ title, role, period, desc, images = [] }: WorkItemPro
   return (
     <div>
       <button
-        onClick={() => images.length > 0 && setOpen((o) => !o)}
-        className={`w-full text-left space-y-1 group ${images.length > 0 ? "cursor-pointer" : "cursor-default"}`}
+        onClick={() => false}
+        className="w-full text-left space-y-1 group cursor-default"
       >
         <div className="flex items-baseline justify-between gap-4">
           <span className="text-sm font-medium flex items-center gap-1.5">
