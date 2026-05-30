@@ -28,7 +28,7 @@ export function WorkItem({ title, role, period, desc, images = [] }: WorkItemPro
               <motion.span
                 animate={{ rotate: open ? 90 : 0 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="text-muted-foreground inline-block"
+                className="text-muted-foreground inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-200"
               >
                 ›
               </motion.span>
