@@ -18,8 +18,12 @@ export function LinkPreview({ href, src, alt = "", children, className, target, 
   const [hovered, setHovered] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
+  const [isTouch, setIsTouch] = useState(true);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
 
   const onMove = (e: React.MouseEvent) => {
     setPos({ x: e.clientX, y: e.clientY });
@@ -39,7 +43,7 @@ export function LinkPreview({ href, src, alt = "", children, className, target, 
         {children}
       </a>
 
-      {mounted && createPortal(
+      {mounted && !isTouch && createPortal(
         <AnimatePresence>
           {hovered && (
             <motion.div
