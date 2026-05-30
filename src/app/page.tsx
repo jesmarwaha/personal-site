@@ -37,9 +37,9 @@ export default function Home() {
             src="https://res.cloudinary.com/dd94erbg6/image/upload/q_auto/f_auto/v1780081244/PINGU_Black_Lifestyle_300Dpi-13-optimized_aap6x4.jpg"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-2 py-0.5 rounded-full bg-foreground/[0.07] hover:bg-foreground/[0.12] transition-all duration-200 font-semibold"
+            className="relative inline-block text-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
           >
-            Mous
+            <strong>Mous</strong>
           </LinkPreview>{" "}
           working on CRM campaigns, ads and shaping the visual identity. You can see some of my work{" "}
           <LinkPreview
