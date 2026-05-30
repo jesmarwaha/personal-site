@@ -40,14 +40,20 @@ const work = [
 
 export default function Portfolio() {
   return (
-    <main className="flex flex-col px-6 pt-20 pb-6">
+    <main className="px-6 pt-20 pb-12 max-w-lg">
       <div className="fixed bottom-0 right-0 px-6 py-6 z-40">
         <ThemeToggle />
       </div>
-      <div className="flex flex-col gap-4">
-        {work.map((w) => (
-          <WorkItem key={w.title} {...w} />
-        ))}
+
+      <div className="flex flex-col gap-8">
+        <h2 className="text-xs uppercase tracking-widest text-muted-foreground">Experience</h2>
+        <div className="flex flex-col divide-y divide-border">
+          {work.map((w) => (
+            <div key={w.title} className="py-5 first:pt-0">
+              <WorkItem {...w} />
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
