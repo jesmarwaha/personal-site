@@ -44,17 +44,17 @@ export function LinkPreview({ href, src, alt = "", children, className, target, 
           {hovered && (
             <motion.div
               className="fixed z-[9998] pointer-events-none"
-              style={{ left: pos.x + 16, top: pos.y - 80 }}
-              initial={{ opacity: 0, scale: 0.9, y: 8 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 8 }}
-              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+              style={{ left: pos.x + 16, top: pos.y - 100 }}
+              initial={{ opacity: 0, scale: 0.85, rotate: -6, y: 12 }}
+              animate={{ opacity: 1, scale: 1, rotate: 2, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, rotate: -6, y: 12 }}
+              transition={{ duration: 0.25, ease: [0.34, 1.56, 0.64, 1] }}
             >
-              <div className="w-48 h-32 rounded-sm overflow-hidden shadow-lg border border-border">
+              <div className="w-48 h-32 rounded-sm overflow-hidden shadow-xl p-1.5 bg-background border border-border/60">
                 <img
                   src={src}
                   alt={alt}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-[2px]"
                   draggable={false}
                 />
               </div>
