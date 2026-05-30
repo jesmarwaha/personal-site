@@ -44,7 +44,7 @@ export default function Home() {
             href="/portfolio"
             className="relative inline-block text-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
           >
-            here
+            <strong>here</strong>
           </a>.
         </p>
       </div>
