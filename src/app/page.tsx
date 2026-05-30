@@ -30,23 +30,23 @@ export default function Home() {
       {/* Top — spacer for fixed header + bio + portfolio link */}
       <div className="flex flex-col gap-4 px-6 pt-20 pb-4">
         <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-          A British-Asian Graphic Designer. Currently working at{" "}
+          Graphic Designer based in Kent. I'm into type, texture and the kind of work that actually makes people stop. Right now I'm at{" "}
           <a
             href="https://mous.co"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
+            className="relative inline-block text-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
           >
             <strong>Mous</strong>
           </a>{" "}
-          as a Midweight Graphic Designer. Crafting CRM campaigns, ads and brand assets.
+          doing CRM campaigns, ads and brand assets. You can see some of it{" "}
+          <a
+            href="/portfolio"
+            className="relative inline-block text-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-[width] after:duration-300 after:ease-in-out hover:after:w-full"
+          >
+            here
+          </a>.
         </p>
-        <a
-          href="/portfolio"
-          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-        >
-          portfolio
-        </a>
       </div>
 
       {/* Bottom bar */}
